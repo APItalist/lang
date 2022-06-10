@@ -1,4 +1,4 @@
-package lang
+package lang_test
 
 import "fmt"
 
