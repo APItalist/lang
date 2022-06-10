@@ -1,3 +1,3 @@
-module github.com/apitalist/lang/v1
+module github.com/apitalist/lang
 
 go 1.18
