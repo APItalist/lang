@@ -3,7 +3,7 @@ package lang_test
 import (
     "fmt"
 
-    "github.com/apitalist/lang/v1"
+    "github.com/apitalist/lang"
 )
 
 func compare[T lang.Ordered](a, b T) int {

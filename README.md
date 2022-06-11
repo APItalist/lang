@@ -7,7 +7,7 @@ This repository provides common useful extensions for the Go language, such as t
 You can import this library by typing:
 
 ```
-go get github.com/apitalist/lang/v1
+go get github.com/apitalist/lang
 ```
 
 ## Documentation
