@@ -3,8 +3,8 @@ package lang
 import "errors"
 
 // TryCatch runs the specified function (f). If the function throws a panic, the handlers are tried in order to handle
-// the panic. The handler functions can be custom, or one of the built-in error handlers, such as ErrorType, ErrorValue,
-// ErrorAny, or AnyPanic
+// the panic. The handler functions can be custom, or one of the built-in error handlers, such as CatchErrorByType,
+// CatchErrorByValue, CatchAnyError, or CatchAny.
 func TryCatch(
 	f func(),
 	catch1 Handler,
@@ -32,11 +32,11 @@ func run(f func()) (result interface{}) {
 // Handler is a function that can process a panic value.
 type Handler func(e any) bool
 
-// ErrorValue creates an error handler that catches fixed value errors. For example, errors are typically declared
-// outside any functions like this:
+// CatchErrorByValue creates an error handler that catches fixed value errors. For example, errors are typically
+// declared outside any functions like this:
 //
 //     var ErrMyError = fmt.Errorf("some value")
-func ErrorValue(value error, f func(err error)) Handler {
+func CatchErrorByValue(value error, f func(err error)) Handler {
 	return func(e any) bool {
 		err, ok := e.(error)
 		if !ok {
@@ -50,7 +50,7 @@ func ErrorValue(value error, f func(err error)) Handler {
 	}
 }
 
-// ErrorType creates an error handler that catches custom type errors. For example, errors are typically declared
+// CatchErrorByType creates an error handler that catches custom type errors. For example, errors are typically declared
 // as a custom struct like this:
 //
 //     type myCustomErrorType struct {
@@ -59,7 +59,7 @@ func ErrorValue(value error, f func(err error)) Handler {
 //     func (m *myCustomErrorType) Error() string {
 //         return "This is a custom error"
 //     }
-func ErrorType[E error](f func(err E)) Handler {
+func CatchErrorByType[E error](f func(err E)) Handler {
 	return func(e any) bool {
 		err, ok := e.(error)
 		if !ok {
@@ -74,8 +74,8 @@ func ErrorType[E error](f func(err E)) Handler {
 	}
 }
 
-// ErrorAny creates a handler that catches any error types. This is typically used as a last error handler.
-func ErrorAny(f func(err error)) Handler {
+// CatchAnyError creates a handler that catches any error types. This is typically used as a last error handler.
+func CatchAnyError(f func(err error)) Handler {
 	return func(e any) bool {
 		err, ok := e.(error)
 		if !ok {
@@ -86,8 +86,8 @@ func ErrorAny(f func(err error)) Handler {
 	}
 }
 
-// AnyPanic creates a catch-all error handler.
-func AnyPanic(f func(err any)) Handler {
+// CatchAny creates a catch-all error handler.
+func CatchAny(f func(err any)) Handler {
 	return func(e any) bool {
 		f(e)
 		return true

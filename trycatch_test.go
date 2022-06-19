@@ -23,26 +23,26 @@ func ExampleTryCatch() {
 			panic(err)
 		},
 		// Handle a specific error type:
-		lang.ErrorType(
+		lang.CatchErrorByType(
 			func(err *myCustomErrorType) {
 				fmt.Printf("Caught my custom error: %v", err)
 			},
 		),
 		// Handle an error by value:
-		lang.ErrorValue(
+		lang.CatchErrorByValue(
 			myOtherError,
 			func(err error) {
 				fmt.Printf("Caught error by value: %v", err)
 			},
 		),
 		// Fallback to catch all errors:
-		lang.ErrorAny(
+		lang.CatchAnyError(
 			func(err error) {
 				fmt.Printf("Caught generic error: %v", err)
 			},
 		),
 		// Fallback to catch anything:
-		lang.AnyPanic(
+		lang.CatchAny(
 			func(err any) {
 				fmt.Printf("Caught panic: %v", err)
 			},
@@ -63,23 +63,23 @@ func ExampleHandler() {
 			return false
 		},
 		// Or use the built-in handlers:
-		lang.ErrorType(
+		lang.CatchErrorByType(
 			func(err *myCustomErrorType) {
 				fmt.Printf("Caught my custom error: %v", err)
 			},
 		),
-		lang.ErrorValue(
+		lang.CatchErrorByValue(
 			myOtherError,
 			func(err error) {
 				fmt.Printf("Caught error by value: %v", err)
 			},
 		),
-		lang.ErrorAny(
+		lang.CatchAnyError(
 			func(err error) {
 				fmt.Printf("Caught generic error: %v", err)
 			},
 		),
-		lang.AnyPanic(
+		lang.CatchAny(
 			func(err any) {
 				fmt.Printf("Caught panic: %v", err)
 			},
@@ -97,7 +97,7 @@ func ExampleErrorType() {
 			panic(err)
 		},
 		// Handle a specific error type:
-		lang.ErrorType(
+		lang.CatchErrorByType(
 			func(err *myCustomErrorType) {
 				fmt.Printf("Caught my custom error: %v", err)
 			},
@@ -116,7 +116,7 @@ func ExampleErrorValue() {
 			panic(myError)
 		},
 		// Handle a specific error type:
-		lang.ErrorValue(
+		lang.CatchErrorByValue(
 			myError,
 			func(err error) {
 				fmt.Printf("Caught custom error: %v", err)
@@ -134,7 +134,7 @@ func ExampleErrorAny() {
 			panic(fmt.Errorf("something bad happened"))
 		},
 		// Handle a specific error type:
-		lang.ErrorAny(
+		lang.CatchAnyError(
 			func(err error) {
 				fmt.Printf("Caught error: %v", err)
 			},
@@ -151,7 +151,7 @@ func ExampleAnyPanic() {
 			panic("something bad happened")
 		},
 		// Handle a specific error type:
-		lang.AnyPanic(
+		lang.CatchAny(
 			func(err any) {
 				fmt.Printf("Caught panic: %v", err)
 			},

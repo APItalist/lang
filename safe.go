@@ -9,12 +9,12 @@ import (
 func Safe(f func()) (err error) {
 	TryCatch(
 		f,
-		ErrorAny(
+		CatchAnyError(
 			func(err2 error) {
 				err = err2
 			},
 		),
-		AnyPanic(
+		CatchAny(
 			func(err2 any) {
 				err = SafeNotErrorPanic{
 					err2,
