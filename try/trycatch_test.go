@@ -16,6 +16,20 @@ func (m myCustomErrorType) Error() string {
 
 var myOtherError = fmt.Errorf("Some custom error")
 
+func Example() {
+	try.Catch(
+		func() {
+			fmt.Println("Hello world!")
+		},
+		catch.Any(
+			func(err any) {
+				fmt.Printf("An error happened: %v", err)
+			},
+		),
+	)
+	// Output: Hello world!
+}
+
 func ExampleCatch() {
 	try.Catch(
 		func() {

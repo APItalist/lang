@@ -15,8 +15,8 @@ func Catch(
 				return
 			}
 		}
+		panic(result)
 	}
-	panic(result)
 }
 
 func run(f func()) (result interface{}) {
