@@ -10,5 +10,5 @@ package lang
 // knowing their types. Ideally, Golang will, at some point, add a native interface for this and we will deprecate this
 // extension.
 type Ordered interface {
-    Number | ~string
+	Number | ~string
 }
