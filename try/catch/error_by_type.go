@@ -3,7 +3,7 @@ package catch
 import (
 	"errors"
 
-	"github.com/apitalist/lang/try"
+	"github.com/apitalist/lang/v2/try"
 )
 
 // ErrorByType creates an error handler that catches custom type errors. For example, errors are typically declared

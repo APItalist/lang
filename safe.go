@@ -3,7 +3,7 @@ package lang
 import (
 	"fmt"
 
-	"github.com/apitalist/lang/try"
+	"github.com/apitalist/lang/v2/try"
 )
 
 // Safe runs the specified function and, if a panic occurs with an error, returns the error. If a panic happens with

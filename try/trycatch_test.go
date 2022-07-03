@@ -3,8 +3,8 @@ package try_test
 import (
 	"fmt"
 
-	"github.com/apitalist/lang/try"
-	"github.com/apitalist/lang/try/catch"
+	"github.com/apitalist/lang/v2/try"
+	"github.com/apitalist/lang/v2/try/catch"
 )
 
 type myCustomErrorType struct {

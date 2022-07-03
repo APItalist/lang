@@ -1,7 +1,7 @@
 package catch
 
 import (
-	"github.com/apitalist/lang/try"
+	"github.com/apitalist/lang/v2/try"
 )
 
 // Any creates a catch-all error handler.

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/apitalist/lang"
+	"github.com/apitalist/lang/v2"
 )
 
 func ExampleSafe() {

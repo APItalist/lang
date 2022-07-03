@@ -3,7 +3,7 @@ package lang_test
 import (
 	"fmt"
 
-	"github.com/apitalist/lang"
+	"github.com/apitalist/lang/v2"
 )
 
 func ExampleMust() {
