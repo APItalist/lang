@@ -1,23 +1,30 @@
 package lang_test
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/apitalist/lang/v2"
+)
 
 type complexObject struct {
 	number int
 }
 
-func (c *complexObject) Equals(other *complexObject) bool {
-	return c.number == other.number
+func (c *complexObject) Equals(other any) bool {
+	switch o := other.(type) {
+	case *complexObject:
+		return c.number == o.number
+	case int, int32, int64:
+		return c.number == o
+	}
+	return false
 }
 
 func ExampleEquals() {
-	var a, b *complexObject
-	a = &complexObject{
+	var a lang.Equals = &complexObject{
 		1,
 	}
-	b = &complexObject{
-		2,
-	}
+	b := int64(2)
 
 	if a.Equals(b) {
 		fmt.Println("A equals B")

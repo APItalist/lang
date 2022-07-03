@@ -3,7 +3,7 @@ package catch
 import (
 	"errors"
 
-	"github.com/apitalist/lang/try"
+	"github.com/apitalist/lang/v2/try"
 )
 
 // ErrorByValue creates an error handler that catches fixed value errors. For example, errors are typically

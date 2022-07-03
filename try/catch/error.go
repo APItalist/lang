@@ -1,7 +1,7 @@
 package catch
 
 import (
-	"github.com/apitalist/lang/try"
+	"github.com/apitalist/lang/v2/try"
 )
 
 // Error creates a handler that catches any error types. This is typically used as a last error handler.
